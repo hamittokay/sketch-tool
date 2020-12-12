@@ -21,8 +21,8 @@ canvas {
   background: #222;
   width: 300px;
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: 1.8rem;
+  left: 1.8rem;
   border-radius: 0.3rem;
   padding: 0 0.2rem;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);

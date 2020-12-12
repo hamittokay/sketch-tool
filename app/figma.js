@@ -1,4 +1,9 @@
-import { DEFAULT_MODE, modes } from './constants.js';
+import {
+  CANVAS_HEIGHT,
+  CANVAS_WIDTH,
+  DEFAULT_MODE,
+  modes,
+} from './constants.js';
 import { handleCursorType } from './utils.js';
 
 class Figma {
@@ -17,6 +22,7 @@ class Figma {
 
     this.setupToolbox();
     this.setupCanvas();
+    this.createGrid();
     this.initListeners();
   }
 
@@ -29,6 +35,44 @@ class Figma {
       this._mode = value;
       this.changeMode(value);
     }
+  }
+
+  createGrid() {
+    const step = 50;
+    const gridGap = 50;
+
+    const width = this.canvas.width;
+    const height = this.canvas.height;
+
+    this.context.save();
+    this.context.strokeStyle = 'gray';
+    this.context.fillStyle = 'black';
+
+    for (let x = 0; x < width; x += step) {
+      this.context.fillText(x, x, 10);
+    }
+
+    for (let x = 0; x < width; x += gridGap) {
+      this.context.beginPath();
+      this.context.lineWidth = 0.2;
+      this.context.moveTo(x, 0);
+      this.context.lineTo(x, height);
+      this.context.stroke();
+    }
+
+    for (let y = 0; y < height; y += step) {
+      this.context.fillText(y, 10, y);
+    }
+
+    for (let y = 0; y < height; y += gridGap) {
+      this.context.beginPath();
+      this.context.lineWidth = 0.2;
+      this.context.moveTo(0, y);
+      this.context.lineTo(width, y);
+      this.context.stroke();
+    }
+
+    this.context.restore();
   }
 
   get toolboxItems() {
@@ -68,8 +112,8 @@ class Figma {
   };
 
   setupCanvas() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
+    this.canvas.width = CANVAS_WIDTH;
+    this.canvas.height = CANVAS_HEIGHT;
 
     this.context.lineWidth = 5;
     this.context.lineCap = 'round';
