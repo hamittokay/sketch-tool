@@ -1,0 +1,68 @@
+:root {
+  font-size: 16px;
+}
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+canvas {
+  display: block;
+}
+
+.toolbox {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background: #222;
+  width: 300px;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  border-radius: 0.3rem;
+  padding: 0 0.2rem;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.toolbox button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #333;
+  margin: 0.4rem 0.2rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.toolbox button:hover {
+  background: #555;
+}
+
+.toolbox button.active {
+  background: rgb(255, 255, 255);
+}
+
+.toolbox button.active img {
+  filter: brightness(0);
+}
+
+.toolbox button img {
+  width: 0.8rem;
+}
+
+.tool--text {
+  position: absolute;
+  display: block;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  width: auto;
+}
